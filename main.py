@@ -1,3 +1,4 @@
+from itertools import product
 DICT = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl',
         '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
 
@@ -26,19 +27,30 @@ def one_and_zero_check(digits):
     return False
 
 
-def list_maker():
+# def list_maker():
+#     digit = number_input()
+#     if len(digit) == 0:
+#         return []
+#     answer_list = ['']
+#     len_list = 1
+#     for i in digit:
+#         len_list *= len(DICT[i])
+#     print(len_list)
+#     answer_list = answer_list * len_list
+#
+#     return answer_list
+# print(list_maker())
+
+def maker():
     digit = number_input()
-    if len(digit) == 0:
-        return []
-    answer_list = ['']
-    len_list = 1
+    args = []
     for i in digit:
-        len_list *= len(DICT[i])
-    print(len_list)
-    answer_list = answer_list * len_list
-    
-    return answer_list
+        args.append(DICT[i])
+    combo_list = list(product(*args))
+    answer = []
+    for i in combo_list:
+        answer.append(''.join(i))
+    return answer
 
 
-print(list_maker())
-
+print(maker())
